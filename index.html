@@ -92,34 +92,41 @@
             </div>
 
             <div class="d-flex gap-2 mb-2">
-                <button class="btn btn-secondary flex-fill">
+                <button class="btn btn-secondary flex-fill" id="startRecording">
                     <i class="bi bi-record-circle"></i> Start Recording
                 </button>
-                <button class="btn btn-secondary flex-fill">
+                <button class="btn btn-secondary flex-fill" id="stopRecording">
                     <i class="bi bi-stop-circle"></i> Stop Recording
                 </button>
             </div>
 
             <div class="d-flex gap-2 mb-2">
-                <button class="btn btn-secondary flex-fill">
+                <button class="btn btn-secondary flex-fill" id="playRecording">
                     <i class="bi bi-play-circle"></i> Play Recording
                 </button>
-                <button class="btn btn-secondary flex-fill">
+                <button class="btn btn-secondary flex-fill" id="shareScreen">
                     <i class="bi bi-display"></i> Share Screen
+                </button>
+                <button class="btn btn-secondary flex-fill" id="stopScreenSharing">
+                    <i class="bi bi-display"></i> Stop screen sharing
                 </button>
             </div>
 
-            <button class="btn btn-secondary w-100 mb-2">
-                <i class="bi bi-handshake"></i> Make An Offer
-            </button>
+            <h5 class="mt-5 pt-5">Select Media Devices</h5>
 
-            <div class="d-flex gap-2">
-                <button class="btn btn-secondary flex-fill">
-                    <i class="bi bi-check2-circle"></i> Accept Offer / Make Answer
-                </button>
-                <button class="btn btn-secondary flex-fill">
-                    <i class="bi bi-person-video2"></i> Show Other Video
-                </button>
+            <div class="mb-3">
+                <label for="audioInputSelect" class="form-label">Audio Input (Microphone)</label>
+                <select id="audio-input" class="form-select"></select>
+            </div>
+
+            <div class="mb-3">
+                <label for="audioOutputSelect" class="form-label">Audio Output (Speaker/Headphones)</label>
+                <select id="audio-output" class="form-select"></select>
+            </div>
+
+            <div class="mb-3">
+                <label for="videoInputSelect" class="form-label">Video Input (Camera)</label>
+                <select id="video-input" class="form-select"></select>
             </div>
         </div>
 
@@ -128,6 +135,7 @@
             <div class="card shadow-sm">
                 <div class="card-header fw-bold"><i class="bi bi-person-video"></i> My feed</div>
                 <div class="video-box">
+                    <button id="muteBtn" class="btn btn-secondary">Mute</button>
                     <video id="myVideo" autoplay playsinline></video>
                 </div>
             </div>
@@ -149,6 +157,11 @@
     </script>
     <script src="changeVideoSize.js">
     </script>
+    <script src="screenRecorder.js">
+    </script>
+    <script src="shareScreen.js"> </script>
+    <script src="inputOutput.js"></script>
+
 </body>
 
 </html>

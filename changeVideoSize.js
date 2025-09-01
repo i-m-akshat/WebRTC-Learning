@@ -1,23 +1,25 @@
 const supportedConstraints = navigator.mediaDevices.getSupportedConstraints();
 console.log(supportedConstraints);
-const vidHeight = document.getElementById("vidHeight");
-const vidWidth = document.getElementById("vidWidth");
+
 document.querySelector("#changeScreenSize").addEventListener("click", (e) => {
-  changeVideoSize(vidHeight.value, vidWidth.value);
+  changeVideoSize();
 });
 
-const changeVideoSize = (height, width) => {
+const changeVideoSize = () => {
   stream.getVideoTracks().forEach((track) => {
     //track is a video track
     //we can get its capabilites from get capabilities
     // or we can apply new constraints via applyConstraints();
     const cap = track.getCapabilities();
+    console.log("Capabilities", cap);
     // vidHeight.value = cap.height?.max;
     // vidWidth.value = cap.width?.max;
-    console.log("provided:" + height + " " + width);
+    const vidHeight = document.getElementById("vidHeight").value;
+    const vidWidth = document.getElementById("vidWidth").value;
+    console.log("provided: height" + vidHeight + "width: " + vidWidth);
     const vConstraints = {
-      height: { exact: height },
-      width: { exact: width },
+      height: { ideal: vidHeight }, //for exact use exact for it to be flexible use ideal
+      width: { ideal: vidWidth },
       //   width: 200,
       //   frameRate: 60,
 
