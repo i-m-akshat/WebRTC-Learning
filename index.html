@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Feed Layout</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f3f4f6;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .container-custom {
+            background: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            max-width: 1200px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .container-custom {
+                flex-direction: row;
+            }
+        }
+
+        .video-box {
+            width: 100%;
+            height: 16rem;
+            background: #1f2937;
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .btn:disabled {
+            opacity: 0.9;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-custom">
+        <!-- Sidebar -->
+        <div class="sidebar p-3 bg-light rounded shadow-sm">
+            <h2 class="h5 fw-bold mb-3"><i class="bi bi-sliders"></i> Controls</h2>
+
+            <button id="shareMicAndCamera" class="btn btn-primary w-100 mb-2">
+                <i class="bi bi-camera-video"></i> Share my mic and camera
+            </button>
+
+            <div class="d-flex gap-2 mb-2">
+                <button id="showMyVideo" class="btn btn-secondary flex-fill">
+                    <i class="bi bi-eye"></i> Show My Video
+                </button>
+                <button id="stopMyVideo" class="btn btn-secondary flex-fill">
+                    <i class="bi bi-eye-slash"></i> Stop My Video
+                </button>
+            </div>
+
+            <div class="mb-2">
+                <!-- <label class="text-muted small d-block mb-1">
+                    <i class="bi bi-aspect-ratio"></i> Change screen size
+                </label> -->
+                <button class="btn btn-secondary flex-fill" id="changeScreenSize">Change screen size</button>
+                <div class="d-flex gap-2">
+                    <input type="text" id="vidWidth" placeholder="1280" class="form-control form-control-sm w-50">
+                    <input type="text" id="vidHeight" placeholder="720" class="form-control form-control-sm w-50">
+                </div>
+            </div>
+
+            <div class="d-flex gap-2 mb-2">
+                <button class="btn btn-secondary flex-fill">
+                    <i class="bi bi-record-circle"></i> Start Recording
+                </button>
+                <button class="btn btn-secondary flex-fill">
+                    <i class="bi bi-stop-circle"></i> Stop Recording
+                </button>
+            </div>
+
+            <div class="d-flex gap-2 mb-2">
+                <button class="btn btn-secondary flex-fill">
+                    <i class="bi bi-play-circle"></i> Play Recording
+                </button>
+                <button class="btn btn-secondary flex-fill">
+                    <i class="bi bi-display"></i> Share Screen
+                </button>
+            </div>
+
+            <button class="btn btn-secondary w-100 mb-2">
+                <i class="bi bi-handshake"></i> Make An Offer
+            </button>
+
+            <div class="d-flex gap-2">
+                <button class="btn btn-secondary flex-fill">
+                    <i class="bi bi-check2-circle"></i> Accept Offer / Make Answer
+                </button>
+                <button class="btn btn-secondary flex-fill">
+                    <i class="bi bi-person-video2"></i> Show Other Video
+                </button>
+            </div>
+        </div>
+
+        <!-- Feeds -->
+        <div class="feeds flex-grow-1 d-flex flex-column gap-3">
+            <div class="card shadow-sm">
+                <div class="card-header fw-bold"><i class="bi bi-person-video"></i> My feed</div>
+                <div class="video-box">
+                    <video id="myVideo" autoplay playsinline></video>
+                </div>
+            </div>
+
+            <div class="card shadow-sm">
+                <div class="card-header fw-bold"><i class="bi bi-people"></i> Their feed</div>
+                <div class="video-box">
+                    <video id="theirVideo" autoplay playsinline></video>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS (for components if needed) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Button active script -->
+    <script src="script.js">
+    </script>
+    <script src="changeVideoSize.js">
+    </script>
+</body>
+
+</html>
