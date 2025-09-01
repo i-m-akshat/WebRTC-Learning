@@ -68,7 +68,7 @@ document.querySelectorAll(".btn").forEach((btn) => {
 let isMuted = false;
 let stream = null;
 let mediaStream = null; //init media /stream var for  our screenshare
-const myVideo = document.querySelector("#myVideo");
+let myVideo = document.querySelector("#myVideo");
 const getMicAndCamera = async () => {
   try {
     stream = await navigator.mediaDevices.getUserMedia({
@@ -104,9 +104,14 @@ const showMyFeed = (e) => {
 const showVid = () => {
   if (stream) {
     myVideo.srcObject = stream; //this will set our mediastream to our video
-    myVideo.muted = true; //here you can mute the video so you wont get the feedback
+    // myVideo.muted = true; //here you can mute the video so you wont get the feedback
     const tracks = stream.getTracks();
     console.log(tracks);
+    if (typeof myVideo.setSinkId === "function") {
+      console.log("This browser supports changing audio output (setSinkId).");
+    } else {
+      console.warn("setSinkId() is not supported in this browser.");
+    }
   } else {
     alert("Media loading");
   }

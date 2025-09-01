@@ -39,13 +39,15 @@ const changeAudioInput = async (e) => {
     console.error(er);
   }
 };
-const changeAudioOutput = (e) => {
+const changeAudioOutput = async (e) => {
   try {
-    const id = e.target.value;
-  } catch (er) {
-    console.error(er);
+    await myVideo.setSinkId(e.target.value);
+    console.log("Audio output changed to:", e.target.value);
+  } catch (err) {
+    console.error("Error changing audio output:", err);
   }
 };
+
 const changeVideoInput = async (e) => {
   try {
     const vidDeviceId = e.target.value;
